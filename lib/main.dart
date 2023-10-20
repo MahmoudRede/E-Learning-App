@@ -1,15 +1,16 @@
 import 'package:e_learning_app/business_logic/app_localization.dart';
 import 'package:e_learning_app/business_logic/global_cubit/global_cubit.dart';
-
 import 'package:e_learning_app/business_logic/theme_cubit/theme_cubit.dart';
 import 'package:e_learning_app/data/local/shared_preference.dart';
 import 'package:e_learning_app/data/remote/dio_helper.dart';
-import 'package:e_learning_app/presentation/screens/onBoarding_screen/onBoarding_screen.dart';
+import 'package:e_learning_app/firebase_options.dart';
+import 'package:e_learning_app/presentation/screens/Login_screen/login_screen.dart';
 import 'package:e_learning_app/presentation/screens/splash_screen/splash_screen.dart';
-import 'package:e_learning_app/presentation/styles/app_size_config.dart';
 import 'package:e_learning_app/presentation/styles/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -26,7 +27,9 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await SharedPreferences.getInstance();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
   await DioHelper.init();
   await UserDataFromStorage.getData();
 
@@ -126,12 +129,19 @@ class _ELearningAppState extends State<ELearningApp>  with WidgetsBindingObserve
                     },
                     // onGenerateRoute: RoutesGenerator.getRoutes,
                     // initialRoute: RoutesManager.splashRoute,
-                    home: const SplashScreen(),
+                    home:  LoginScreen(),
 
                     theme: ThemeData(
                       fontFamily: UserDataFromStorage.languageCodeFromStorage == 'en'?'poppins' : 'Somar',
                       scaffoldBackgroundColor: AppColor.white,
                       appBarTheme: const AppBarTheme(
+                        iconTheme: IconThemeData(
+                          color: AppColor.black
+                        ),
+                        systemOverlayStyle: SystemUiOverlayStyle(
+                          statusBarColor: AppColor.white,
+                          statusBarIconBrightness: Brightness.dark
+                        ),
                         elevation: 0.0,
                       ),
                     ),

@@ -2,7 +2,11 @@
   "langEnglish": "English",
   "langArabic": "العربية",
   "signUp": "انشاء حساب",
-  "logIn": "تسجيل الدخول"
+  "logIn": "تسجيل الدخول",
+  "continue": "استمرار",
+  "verify": "تاكيد",
+  "enterPhoneNumber": "ادخل رقم الهاتف",
+  "phoneRequired": "رقم الهاتف مطلوب"
 
 
 }

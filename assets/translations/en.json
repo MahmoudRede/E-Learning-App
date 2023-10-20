@@ -2,7 +2,15 @@
   "langEnglish": "English",
   "langArabic": "العربية",
   "signUp": "Sign up",
-  "logIn": "Log in"
+  "logIn": "Log in",
+  "continue": "Continue",
+  "verify": "Verify",
+  "signIn": "Sign In",
+  "enterPhoneNumber": "Enter Phone Number",
+  "phoneRequired": "Phone Number Required"
+
+
+
 
 
 }
